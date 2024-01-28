@@ -27,4 +27,8 @@ molecule test --all
 
 ### Test the installation
 
-DESCRIBE, HOW THE INSTALLATION CAN BE TESTED MANUALLY
+Ssh into the machine and rund the redis-cli PING command.
+
+```
+redis-cli -a r3dis-s3cr3t -h localhost -p 6379 PING
+```

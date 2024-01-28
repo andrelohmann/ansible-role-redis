@@ -3,7 +3,15 @@
   hosts: all
 
   vars:
-    role_configs: []
+    redis_config:
+    - key: bind
+      value: "0.0.0.0"
+    - key: protected-mode
+      value: "no"
+    - key: port
+      value: "6379"
+    - key: requirepass
+      value: "r3dis-s3cr3t"
 
   tasks:
   - name: "Include andrelohmann.redis"

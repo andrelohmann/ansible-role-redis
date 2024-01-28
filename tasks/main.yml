@@ -40,4 +40,8 @@
     packages:
     - redis
 
+- name: Set redis configs
+  ansible.builtin.include_tasks: config.yml
+  loop: "{{ redis_config }}"
+
 ...

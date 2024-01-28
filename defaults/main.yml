@@ -1,6 +1,19 @@
 ---
 
-# Default Variables
-role_config: []
+# Set the configs for redis.conf
+redis_config: []
+
+# bind address
+# - key: bind
+#   value: "0.0.0.0"
+# protected mode - deny/allow connections from other hosts
+# - key: protected-mode
+#   value: "no"
+# port
+# - key: port
+#   value: "6379"
+# requirepass
+# - key: requirepass
+#   value: "foobar"
 
 ...

@@ -4,9 +4,7 @@
 
 ## Content
 
-__ROLE_NAME__ __CONTENT__
-
-This repository just serves as a template for new ansible roles with the full testing setup.
+This repository will install redis from the official redis repositories
 
 ### Requirements
 
@@ -14,9 +12,23 @@ This role requires ubuntu
 
 ### Role Variables
 
-__EXPLAIN_ALL_VARIABLES__
+Set any config available in /etc/redis/redis.conf
 
-    role_config: []
+    # Set the configs for redis.conf
+    redis_config: []
+
+    # bind address
+    # - key: bind
+    #   value: "0.0.0.0"
+    # protected mode - deny/allow connections from other hosts
+    # - key: protected-mode
+    #   value: "no"
+    # port
+    # - key: port
+    #   value: "6379"
+    # requirepass
+    # - key: requirepass
+    #   value: "foobar"
 
 ### Example Playbook
 
