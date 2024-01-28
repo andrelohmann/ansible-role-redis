@@ -1,0 +1,21 @@
+---
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+
+  - name: Run redis-cli PING
+    ansible.builtin.command: redis-cli -a r3dis-s3cr3t -h localhost -p 6379 PING
+    register: _return_value
+
+  - name: Dump _return_value
+    ansible.builtin.debug:
+      var: _return_value
+
+  - name: Assert _return_value includes PONG
+    ansible.builtin.assert:
+      that:
+      - _return_value.stdout is search('PONG')
+
+...

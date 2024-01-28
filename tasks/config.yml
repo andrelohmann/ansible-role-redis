@@ -1,0 +1,11 @@
+---
+
+- name: Set redis configs
+  ansible.builtin.lineinfile:
+    path: /etc/redis/redis.conf
+    regexp: '^{{ item.key }} '
+    insertbefore: "^# {{ item.key }} "
+    line: "{{ item.key }} {{ item.value }}"
+  notify: Redis restart
+
+...

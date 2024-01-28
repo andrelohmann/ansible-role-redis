@@ -1,0 +1,47 @@
+---
+
+- name: Apt | Install packages
+  ansible.builtin.apt:
+    name: "{{ packages }}"
+    state: present
+    dpkg_options: 'force-confnew,force-confdef'
+    autoclean: true
+    autoremove: true
+    update_cache: true
+    cache_valid_time: 3600
+  vars:
+    packages:
+    - lsb-release
+    - curl
+    - gpg
+
+- name: Apt | Add redis key
+  ansible.builtin.get_url:
+    url: "https://packages.redis.io/gpg"
+    dest: /etc/apt/trusted.gpg.d/redis.asc
+    mode: '0644'
+    force: true
+
+- name: Apt | Install redis repo
+  ansible.builtin.apt_repository:
+    repo: "deb [signed-by=/etc/apt/trusted.gpg.d/redis.asc] https://packages.redis.io/deb {{ ansible_distribution_release }} main"
+    state: present
+    filename: redis
+
+- name: Apt | Install redis
+  ansible.builtin.apt:
+    name: "{{ packages }}"
+    state: present
+    dpkg_options: 'force-confnew,force-confdef'
+    autoclean: true
+    autoremove: true
+    update_cache: true
+  vars:
+    packages:
+    - redis
+
+- name: Set redis configs
+  ansible.builtin.include_tasks: config.yml
+  loop: "{{ redis_config }}"
+
+...
