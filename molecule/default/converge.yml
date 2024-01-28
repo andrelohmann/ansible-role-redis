@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: all
+
+  vars:
+    role_configs: []
+
+  tasks:
+  - name: "Include andrelohmann.redis"
+    include_role:
+      name: "andrelohmann.redis"
+...

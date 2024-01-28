@@ -1,0 +1,22 @@
+---
+galaxy_info:
+  role_name: redis
+  author: andrelohmann
+  description: Install redis from official repository
+  company: CloudCourse GmbH
+
+  license: MIT
+
+  min_ansible_version: "2.11"
+
+  platforms:
+  - name: Ubuntu
+    versions:
+    - jammy
+    - focal
+
+  galaxy_tags:
+  - redis
+
+dependencies: []
+...
