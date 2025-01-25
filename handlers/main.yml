@@ -1,13 +1,8 @@
 ---
 
-#- name: Redis restart
-#  ansible.builtin.systemd:
-#    name: redis-server
-#    state: restarted
-#  changed_when: false
-
 - name: Redis restart
-  ansible.builtin.shell: systemctl restart redis-server.service || systemctl status redis-server.service || journalctl -xeu redis-server.service
-  args:
-    executable: /bin/bash
+  ansible.builtin.systemd:
+    name: redis-server
+    state: restarted
+
 ...
