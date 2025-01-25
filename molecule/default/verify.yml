@@ -5,6 +5,16 @@
   gather_facts: false
   tasks:
 
+  - name: Redis restart
+    ansible.builtin.shell: systemctl restart redis-server.service || systemctl status redis-server.service || journalctl -xeu redis-server.service
+    args:
+      executable: /bin/bash
+    register: _dump_stuff
+
+  - name: Dump _dump_stuff
+    ansible.builtin.debug:
+      var: _dump_stuff
+
   - name: Run redis-cli PING
     ansible.builtin.command: redis-cli -a r3dis-s3cr3t -h localhost -p 6379 PING
     register: _return_value
