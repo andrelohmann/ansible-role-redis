@@ -40,6 +40,11 @@
     packages:
     - redis
 
+- name: Redis enable
+  ansible.builtin.systemd:
+    name: redis-server
+    enabled: true
+
 - name: Set redis configs
   ansible.builtin.include_tasks: config.yml
   loop: "{{ redis_config }}"
