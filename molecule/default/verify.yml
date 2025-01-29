@@ -11,6 +11,7 @@
       executable: /bin/bash
     register: _dump_stuff
     changed_when: false
+    # noqa: command-instead-of-module
 
   - name: Dump _dump_stuff
     ansible.builtin.debug:
