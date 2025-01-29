@@ -10,6 +10,8 @@
     args:
       executable: /bin/bash
     register: _dump_stuff
+    changed_when: false
+    # noqa: command-instead-of-module
 
   - name: Dump _dump_stuff
     ansible.builtin.debug:
@@ -18,6 +20,7 @@
   - name: Run redis-cli PING
     ansible.builtin.command: redis-cli -a r3dis-s3cr3t -h localhost -p 6379 PING
     register: _return_value
+    changed_when: false
 
   - name: Dump _return_value
     ansible.builtin.debug:
