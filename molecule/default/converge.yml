@@ -2,7 +2,7 @@
 - name: Converge
   hosts: all
   become: true
-  become_method: sudo
+  become_method: ansible.builtin.sudo
 
   vars:
     redis_config:
@@ -16,7 +16,7 @@
       value: "r3dis-s3cr3t"
 
   tasks:
-  - name: "Include andrelohmann.redis"
-    include_role:
+  - name: Include andrelohmann.redis
+    ansible.builtin.include_role:
       name: "andrelohmann.redis"
 ...
